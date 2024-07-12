@@ -24,8 +24,8 @@ public class ScannerDemo {
          * Eclipse's console. This may change depending on the environment where
          * are running your program or the input/output stream you are using.
          */
-
-        
+    	
+    	Scanner scanner = new Scanner(System.in);
         
         /*
          * 2. Use a syso to ask the user for their name and then use the Scanner
@@ -42,7 +42,9 @@ public class ScannerDemo {
          * String variable.
          */
 
-        
+        System.out.println("Input a name");
+        String userName = scanner.nextLine();
+        System.out.println("Hello, " + userName);
         
         /*
          * 3. Ask the user for their age in the console. Then use the Scanner to
@@ -52,7 +54,9 @@ public class ScannerDemo {
          * on Integer.parseInt().
          */
 
-        
+        System.out.println("Input your age");
+        int age = scanner.nextInt();
+        System.out.println("You are " + age + " years old");
         
         /*
          * 4.) Try asking the user for another piece of information that's not a
@@ -61,10 +65,17 @@ public class ScannerDemo {
          * Note: There are many methods similar to the one you used for int that
          * are capable of taking in primitive data types.
          */
-
+        
+        System.out.println("Is this information correct? (true/false)");
+        boolean confirm = scanner.nextBoolean();
+        
+        
         // 5.) Print the user's data to the console nicely formatted.
 
-        
+        if (confirm)
+        {
+        	System.out.println("Your name is " + userName + ". You are " + age + " years old. ");
+        }
         
         /*
          * 6.) Close your scanner to avoid memory leaks.
@@ -72,7 +83,7 @@ public class ScannerDemo {
          * Note: When using a Scanner with the System.in input stream in larger
          * programs only close the scanner when your program is completely done.
          */
-
+        scanner.close();
     }
 
 }

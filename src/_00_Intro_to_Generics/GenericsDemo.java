@@ -19,6 +19,7 @@ package _00_Intro_to_Generics;
 public class GenericsDemo<T> {
     // This variable can be any object type because it is type T(our Generic)
    private T thing;
+   
 
     public void setThing(T thing) {
         this.thing = thing;
