@@ -1,5 +1,7 @@
 package _06_Console_Store;
 
+import java.util.Scanner;
+
 public class ConsoleStore {
 
     /*
@@ -35,9 +37,62 @@ public class ConsoleStore {
      * print out a receipt showing their name, the individual prices of the
      * items and their total.
      */
+	
+	int balance;
+	Cart cart;
+	Scanner scanner;
 
     public static void main(String[] args) {
-
+    	new ConsoleStore().shopping();
+    }
+    
+    public void shopping()
+    {
+    	boolean checkout = false;
+    	balance = 60;
+    	cart = new Cart<Item>();
+    	scanner = new Scanner(System.in);
+    	
+    	do 
+    	{
+        	System.out.println("Commands: add item, remove item, view cart, check out");
+    		String input = scanner.nextLine();
+        	
+        	if (input.equals("add item"))
+        	{
+        		addItem();
+        	}
+        	if (input.equals("remove item"))
+        	{
+        		removeItem();
+        	}
+        	else if (input.equals("view cart"))
+        	{
+        		cart.showCart();
+        	}
+        	else if (input.equals("check out"))
+        	{
+            	checkout = true;
+        	}
+    	}
+    	while (checkout == false);
     }
 
+	void addItem()
+    {
+    	System.out.println("Shelf: tshirt, hoodie, pants, shorts");
+    	System.out.println("Add an item: ");
+    	
+    	String input = scanner.nextLine();
+    	
+    	if (input.equals("tshirt"))
+    	{
+    		cart.add(new Tshirt());
+    	}
+    }
+    
+    void removeItem() {
+    	cart.showCart();
+		System.out.println("Remove an item: ");
+	}
 }
