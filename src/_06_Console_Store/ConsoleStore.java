@@ -57,18 +57,19 @@ public class ConsoleStore {
     	{
         	System.out.println("Commands: add item, remove item, view cart, check out");
     		String input = scanner.nextLine();
-        	
+    		
         	if (input.equals("add item"))
         	{
         		addItem();
         	}
-        	if (input.equals("remove item"))
+        	else if (input.equals("remove item"))
         	{
         		removeItem();
         	}
         	else if (input.equals("view cart"))
         	{
         		cart.showCart();
+        		System.out.println("Total price" + cart.getTotal());
         	}
         	else if (input.equals("check out"))
         	{
@@ -77,10 +78,12 @@ public class ConsoleStore {
     	}
     	while (checkout == false);
     }
+    
+    
 
 	void addItem()
     {
-    	System.out.println("Shelf: tshirt, hoodie, pants, shorts");
+    	System.out.println("Shelf: tshirt - $15, hoodie - $20, pants - $15, shorts - $10");
     	System.out.println("Add an item: ");
     	
     	String input = scanner.nextLine();
@@ -89,10 +92,29 @@ public class ConsoleStore {
     	{
     		cart.add(new Tshirt());
     	}
+    	else if (input.equals("hoodie"))
+    	{
+    		cart.add(new Hoodie());
+    	}
+    	else if (input.equals("pants"))
+    	{
+    		cart.add(new Pants());
+    	}
+    	else if (input.equals("shorts"))
+    	{
+    		cart.add(new Shorts());
+    	}
+    	return;
     }
     
     void removeItem() {
     	cart.showCart();
 		System.out.println("Remove an item: ");
+		
+		int input = scanner.nextInt();
+		
+		cart.remove(input);
+		
+		return;
 	}
 }

@@ -7,10 +7,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public abstract class Item {
-    String item;
+    String image;
 
+    int price;
+    
     public abstract String getItemName();
 
+    public abstract JLabel getItemImage();
+    
     @SuppressWarnings("rawtypes")
     public static ImageIcon loadImage(String fileName) {
         try {
@@ -20,5 +24,10 @@ public abstract class Item {
             e.printStackTrace();
             return null;
         }
+    }
+    
+    public int getPrice()
+    {
+    	return price;
     }
 }

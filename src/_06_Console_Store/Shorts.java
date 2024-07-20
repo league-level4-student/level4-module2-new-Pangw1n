@@ -2,18 +2,18 @@ package _06_Console_Store;
 
 import javax.swing.JLabel;
 
-public class Tshirt extends Item {
-	
-	public Tshirt()
+public class Shorts extends Item {
+
+	public Shorts()
 	{
-		price = 15;
-		this.image = "tshirt.jpeg";
+		price = 10;
+		this.image = "shorts.jpeg";
 	}
 	
 	@Override
 	public String getItemName() {
 		// TODO Auto-generated method stub
-		return "tshirt";
+		return "shorts";
 	}
 	
 	@Override
