@@ -7,7 +7,7 @@ public class Pants extends Item {
 	public Pants()
 	{
 		price = 15;
-		this.image = "pants.jpeg";
+		this.image = "Pants.jpg";
 	}
 	
 	@Override

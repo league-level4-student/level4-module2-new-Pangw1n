@@ -49,9 +49,10 @@ public class ConsoleStore {
     public void shopping()
     {
     	boolean checkout = false;
-    	balance = 60;
+    	balance = 100;
     	cart = new Cart<Item>();
     	scanner = new Scanner(System.in);
+    	System.out.println("Balance = " + balance);
     	
     	do 
     	{
@@ -69,14 +70,32 @@ public class ConsoleStore {
         	else if (input.equals("view cart"))
         	{
         		cart.showCart();
-        		System.out.println("Total price" + cart.getTotal());
+        		System.out.println("Total price: $" + cart.getTotal());
         	}
         	else if (input.equals("check out"))
         	{
-            	checkout = true;
+        		if (cart.getTotal() == 0)
+        		{
+        			System.out.println("No items in cart");
+        		}
+        		else if (cart.getTotal() <= balance)
+        		{
+                	checkout = true;
+        		}
+        		else
+        		{
+        			System.out.println("Insufficient funds, current balance: " + balance + ", cost: " + cart.getTotal());
+        		}
         	}
     	}
     	while (checkout == false);
+    	
+    	int totalCost = cart.getTotal();
+    	balance -= totalCost;
+    	System.out.println("Items purchased for $" + totalCost + ", new balance: " + balance);
+    	cart.displayItems();
+    	
+    	scanner.close();
     }
     
     
@@ -112,8 +131,9 @@ public class ConsoleStore {
 		System.out.println("Remove an item: ");
 		
 		int input = scanner.nextInt();
+		scanner.nextLine();
 		
-		cart.remove(input);
+		cart.remove(input - 1);
 		
 		return;
 	}

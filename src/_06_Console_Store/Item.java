@@ -19,7 +19,7 @@ public abstract class Item {
     public static ImageIcon loadImage(String fileName) {
         try {
             return new ImageIcon(ImageIO
-                    .read(new Cart().getClass().getResourceAsStream("images/"+fileName)));
+                    .read(new Cart().getClass().getResourceAsStream(fileName)));
         } catch (IOException e) {
             e.printStackTrace();
             return null;
